@@ -5,6 +5,7 @@ import { TanStackDevtools } from '@tanstack/react-devtools'
 import Header from '../components/Header'
 
 import appCss from '../styles.css?url'
+import Footer from '@/components/Footer'
 
 export const Route = createRootRoute({
   head: () => ({
@@ -39,11 +40,12 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       </head>
       <body>
 
-        <div className='min-h-screen bg-slate-100 text-slate-900 dark:bg-slate-950 dark:text-white'>
+        <div className='flex flex-col min-h-screen bg-slate-100 text-slate-900 dark:bg-slate-950 dark:text-white'>
           <Header />
-          <main className='mx-auto max-w-6xl px-4 py-6'>
+          <main className='flex-grow'>
             {children}
           </main>
+          <Footer />
         </div>
 
         <TanStackDevtools
