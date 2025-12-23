@@ -1,21 +1,13 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowRightIcon } from "lucide-react";
-import ProductCard from "./ProductCard";
+import { ProductCard } from "./ProductCard";
+import type { Product } from "@/types/product";
 import {
   Card,
   CardDescription,
   CardHeader,
   CardTitle,
 } from '@/components/ui/card'
-
-
-interface Product {
-  id: number;
-  name: string;
-  price: number;
-  description: string;
-  rating: number;
-}
 
 interface RecommendedSectionProps {
   products: Array<Product>;
@@ -33,7 +25,7 @@ export default function RecommendedSection({ products }: RecommendedSectionProps
                 Recommended
               </p>
               <CardTitle className="text-2xl font-semibold text-slate-900 dark:text-white">
-                Starter picks from the catalog
+                Starter picks
               </CardTitle>
             </CardHeader>
             <CardDescription className="mt-1 text-sm text-slate-600 dark:text-slate-300">
@@ -49,8 +41,8 @@ export default function RecommendedSection({ products }: RecommendedSectionProps
           </Link>
         </div>
 
-        <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {products.map((product) => (
+        <div className="mt-6 mb-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {products.slice(0, 3).map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
         </div>
